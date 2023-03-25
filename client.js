@@ -94,10 +94,12 @@ cnbtn.addEventListener('click', function(){
 
 socket.on('chat message', function({to, content, from}){
     console.log("message incoming: " + content)
-    var item = document.createElement('li');
-    item.textContent = from + ": " + content;
-    messages.appendChild(item)
-    window.scrollTo(0, document.body.scrollHeight)
+    if(to == currentGroup){
+        var item = document.createElement('li');
+        item.textContent = from + ": " + content;
+        messages.appendChild(item)
+        window.scrollTo(0, document.body.scrollHeight)
+    }
 
     //TODO
     // go through each chat, add to messages of that chat
